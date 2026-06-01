@@ -6,6 +6,7 @@ models/*.cbm
 
 data/processed/*
 data/predictions/*
+data/raw/*
 
 .ipynb_checkpoints/
 
