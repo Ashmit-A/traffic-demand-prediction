@@ -1,10 +1,12 @@
 import pandas as pd
+from pathlib import Path
 
 
-def load_data(filepath: str) -> pd.DataFrame:
+def load_data(filepath: str | Path) -> pd.DataFrame:
     """
     Load CSV file.
     """
+    print(f"\nLoading data from {filepath}...")
     return pd.read_csv(filepath)
 
 
@@ -12,7 +14,7 @@ def remove_identifier(df: pd.DataFrame) -> pd.DataFrame:
     """
     Remove non-predictive identifier columns.
     """
-
+    print("\nRemoving identifier columns...")
     if "Index" in df.columns:
         df = df.drop(columns=["Index"])
 
@@ -39,6 +41,8 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
         if col != "demand":
             df[col] = df[col].fillna(df[col].median())
 
+    print("\nMissing values handled.")
+
     return df
 
 
@@ -51,4 +55,5 @@ def preprocess(df: pd.DataFrame) -> pd.DataFrame:
 
     df = handle_missing_values(df)
 
+    print("\nPreprocessing completed.")
     return df

@@ -18,6 +18,8 @@ def extract_time_features(df: pd.DataFrame) -> pd.DataFrame:
     df["hour"] = split[0].astype(int)
     df["minute"] = split[1].astype(int)
 
+    print("\nTime features extracted.")
+
     return df
 
 
@@ -44,6 +46,8 @@ def create_peak_hour_features(df: pd.DataFrame) -> pd.DataFrame:
         (df["hour"] <= 5)
     ).astype(int)
 
+    print("\nPeak hour features created.")
+
     return df
 
 
@@ -60,7 +64,7 @@ def create_interaction_features(df: pd.DataFrame) -> pd.DataFrame:
             df["Temperature"] *
             df["hour"]
         )
-
+    print("\nInteraction features created.")
     return df
 
 
@@ -75,4 +79,6 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
 
     df = create_interaction_features(df)
 
-    return df
+    print("\nFeature engineering completed.")
+    
+    return df   
