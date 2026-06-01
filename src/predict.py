@@ -3,13 +3,13 @@ from pathlib import Path
 import pandas as pd
 from catboost import CatBoostRegressor
 
-from config import (
+from src.config import (
     MODEL_PATH,
     PREDICTIONS_DIR,
 )
 
-from preprocess import preprocess
-from feature_engineering import feature_engineering
+from src.preprocess import preprocess
+from src.feature_engineering import feature_engineering
 
 
 def load_model():
@@ -68,6 +68,19 @@ def predict_csv(input_csv: str):
 
     return output
 
+def predict_single(record: dict):
+
+    model = load_model()
+
+    df = pd.DataFrame([record])
+
+    df = preprocess(df)
+
+    df = feature_engineering(df)
+
+    prediction = model.predict(df)
+
+    return float(prediction[0])
 
 if __name__ == "__main__":
 

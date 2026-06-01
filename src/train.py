@@ -6,9 +6,9 @@ from catboost import CatBoostRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 
-from preprocess import load_data, preprocess
-from feature_engineering import feature_engineering
-from config import (
+from src.preprocess import load_data, preprocess
+from src.feature_engineering import feature_engineering
+from src.config import (
     TRAIN_DATA_PATH,
     MODEL_PATH,
     TARGET,

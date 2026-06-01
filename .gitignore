@@ -8,6 +8,9 @@ data/processed/*
 data/predictions/*
 data/raw/*
 
+reports/*.csv
+reports/*.png
+
 .ipynb_checkpoints/
 
 .vscode/

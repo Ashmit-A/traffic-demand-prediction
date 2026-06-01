@@ -27,7 +27,7 @@ def handle_missing_values(df: pd.DataFrame) -> pd.DataFrame:
     """
 
     categorical_cols = df.select_dtypes(
-        include=["object"]
+        include=["object","string"]
     ).columns
 
     numerical_cols = df.select_dtypes(
